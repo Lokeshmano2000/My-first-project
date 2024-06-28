@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            height: 500px;
+            width: 600px;
+            margin-left: 330px;
+            margin-top: 100px;
+            background-color: white;
+            border-radius: 10px;
+
+        }
+        #div2{
+            width: 30%;
+            height: 180px;
+            border-radius: 60%;
+            margin-left: 190px;
+            margin-top: 10px;
+            
+        }
+        #div3{
+            margin-left: 80px;
+            margin-top: 30px;
+            
+        }
+       
+        #div4{
+            margin-left: 80px;
+            
+        }
+        #email{
+            height: 30px;
+            width: 400px;
+           
+        }
+        #password{
+            height: 30px;
+            width: 400px;
+           
+        }
+        #div5{
+            margin-left: 200px;
+            height: 40px;
+            width: 180px;
+            background-color: green;
+            
+        }
+        #div6{
+            padding-left: 90px;
+            padding-top: 30px;
+        }
+        #div7{
+            padding-left: 120px;
+        }
+        .error {
+            color: black;
+            font-size: 12px;
+        }
+        .img{
+            background-image: url(example.jpg);
+           height: 500px;
+           width: 600px;
+           border-radius: 10px;
+           
+            
+        }
+
+        
+    </style>
+</head>
+<body >
+    <form id="registrationForm" action="example3.html">
+        <div id="div1">
+            <div class="img">
+            <img src="logo.avif" alt="nike" id="div2">
+            <div id="div3">
+                <label for="email" >Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <span class="error" id="emailError"></span>
+            </div>
+            <div id="div4">
+                <label for="password" >Password:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+                <span class="error" id="passwordError"></span>
+            </div>
+            <button type="submit" id="div5">Login</button><br>
+           <div id="div6">
+            <label for="text">Not a member?</label>
+            <a href="code2.html">Sign Up</a>
+            <a href="#" id="div7">Forget password?</a>
+           </div>
+            </div>
+            
+        </div>
+    </form>
+    <script>
+        const form = document.getElementById('registrationForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        form.addEventListener('submit', function(event) {
+            let valid = true;
+
+
+           // Email validation
+           if (!emailInput.validity.valid) {
+                emailError.textContent = 'Please enter a valid email address.';
+                valid = false;
+            } else {
+                emailError.textContent = '';
+            }
+
+            
+            const passwordValue = passwordInput.value;
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+
+            if (!passwordRegex.test(passwordValue)) {
+                passwordError.textContent = 'Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter, and a number.';
+                valid = false;
+            } else {
+                passwordError.textContent = '';
+            }
+            if (!valid) {
+                event.preventDefault();
+            }
+
+        });
+        
+
+    </script>
+</body>
+</html>
